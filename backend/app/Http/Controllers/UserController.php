@@ -65,13 +65,22 @@ public function register(Request $request)
     return response()->json(compact('user','token'),201);
 }
 
-public function list(){
+  public function list() {
 
-    $products = DB::table('producto')
+        $products = DB::table('producto')
             ->join('pedido', 'producto.codigo', '=', 'pedido.id_producto')
-            ->select('producto.nombre', 'producto.precio', 'pedido.fecha', 'pedido.total')
+            ->select('producto.codigo','producto.nombre', 'producto.precio', 'pedido.fecha', 'pedido.total')
             ->get();
 
-            return response()->json(['pedidos' =>  $products]);
-}
+        return response()->json(['pedidos' => $products]);
+    }
+
+    public function inventary()
+    {
+
+        $inventary = DB::table('inventario')->get();
+
+
+        return response()->json(['inventario' => $inventary]);
+    }
 }

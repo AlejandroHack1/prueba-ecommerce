@@ -6,12 +6,13 @@
 
 <ion-content>
 
-  <div *ngIf="product">
+  <div *ngIf="id_product">
 
     <ion-list class="ion-text-wrap">
 
-      <h1>Productos Disponibles</h1>
-      <h5>{{product.cantidad}}</h5>
+      <ion-item *ngFor="let x of id_product">
+        <h1>Productos Disponibles: {{x.cantidad}}</h1>
+      </ion-item>
 
 
     </ion-list>

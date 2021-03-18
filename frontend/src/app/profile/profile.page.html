@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-toolbar>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionCancel)="onCancel($event)" (ionInput)="getItems($event)"
+    placeholder="Buscar">
+  </ion-searchbar>
+</ion-toolbar>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="light" expand="full" (click)="verPedidos()">ver pedidos</ion-button>
+        <ion-button color="light" expand="full" (click)="salir()">Salir</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div *ngIf=" (  view ) && !showList ">
+
+    <ngx-datatable class="material" [sortType]="'multi'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="200"
+      [rows]="rows" [columns]="columns" [columnMode]="'force'" [scrollbarH]="true" [limit]="20" [sortType]="'multi'">
+
+
+
+
+      <ngx-datatable-column [width]="350" name="Nombre">
+
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.nombre}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+
+      <ngx-datatable-column [sortable]="true" name="Precio">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          ${{row.precio}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column [sortable]="true" name="Fecha">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.fecha}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column [sortable]="true" name="Total">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          ${{row.total}}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Iventario">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button ion-button small outline (click)="Inventary(row)">Ver</button>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+
+  </div>
+
+
+
+  <div *ngIf="showList">
+
+    <ngx-datatable class="material" [sortType]="'multi'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="200"
+      [rows]="items" [columns]="columns" [columnMode]="'force'" [scrollbarH]="true" [limit]="20" [sortType]="'multi'">
+
+
+
+
+      <ngx-datatable-column [width]="350" name="Nombre">
+
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.nombre}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+
+      <ngx-datatable-column [sortable]="true" name="Precio">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          ${{row.precio}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column [sortable]="true" name="Fecha">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.fecha}}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+      <ngx-datatable-column [sortable]="true" name="Total">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          ${{row.total}}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Iventario">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button ion-button small outline (click)="Inventary(row)">Ver</button>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+
+  </div>
+
+</ion-content>

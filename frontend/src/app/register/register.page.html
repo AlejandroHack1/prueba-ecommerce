@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="authForm" (ngSubmit)="Register()" novalidate>
+
+    <ion-list>
+
+
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Nombre de usuario</ion-label>
+        <ion-input formControlName="name" type="text" name="fullname" #name></ion-input>
+      </ion-item>
+
+      <span class="error ion-padding" *ngIf="submitted && errorControl.name.errors?.required">
+        Nombre de usuario es requerido
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.name.errors?.pattern">
+        Permitido solo letras
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.name.errors?.minlength">
+        Longitud mínima del nombre de usuario es 4!
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.name.errors?.maxlength">
+        Longiud máxima del nombre de usuario es 255!
+      </span>
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input formControlName="email" type="email" name="email" #email></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.email.errors?.required">
+        Correo es requerido
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.email.errors?.pattern">
+        Correo no valido
+      </span>
+
+
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input formControlName="password" type="password" name="password" #password></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.password.errors?.required">
+        campo contraseña es requerido!
+      </span>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.password.errors?.minlength">
+        longitud minima de contraseña es 6!
+      </span>
+
+
+
+
+      <ion-item>
+        <ion-label position="stacked">Repita contraseña</ion-label>
+        <ion-input formControlName="password_confirmation" type="password" name="password_confirmation" #password_confirmation>
+        </ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="submitted && errorControl.password_confirmation.errors?.required">
+        repita contraseña es requerido!
+      </span>
+
+
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="light" type="submit" expand="block">Registrar</ion-button>
+        </ion-col>
+      </ion-row>
+
+
+
+    </ion-list>
+
+  </form>
+
+</ion-content>

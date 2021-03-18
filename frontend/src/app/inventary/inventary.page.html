@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>inventario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="product">
+
+    <ion-list class="ion-text-wrap">
+
+      <h1>Productos Disponibles</h1>
+      <h5>{{product.cantidad}}</h5>
+
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

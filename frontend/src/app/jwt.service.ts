@@ -18,11 +18,12 @@ export class JwtService {
   getData(): Observable<any> {
 
     let pedidos = this.http.get('http://127.0.0.1:8000/api/list');
+    let inventario = this.http.get('http://127.0.0.1:8000/api/inventary');
     
 
 
 
-    return forkJoin([pedidos]);
+    return forkJoin([pedidos,inventario]);
   }
 
    // Http Options
